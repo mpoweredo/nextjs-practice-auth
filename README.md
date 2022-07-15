@@ -1,0 +1,1 @@
+Simple app where i wanted to pratice authentication with NextAuth.
