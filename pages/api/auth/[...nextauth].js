@@ -12,6 +12,8 @@ export default NextAuth({
 			async authorize(credentials) {
 				const { password, email } = credentials;
 
+				console.log(`${password}, email to: ${email}`)
+
 				const client = await connectToDatabase();
 
 				const userCollection = client.db().collection('users');

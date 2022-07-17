@@ -42,7 +42,7 @@ const handler = async (req, res) => {
         name,
     })
 
-    res.status(200).json({message: 'User created!'})
+    res.status(200).json({message: 'User created!', userdata: {email, password, name}})
 }
 
 export default handler

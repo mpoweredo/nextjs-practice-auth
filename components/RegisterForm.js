@@ -1,6 +1,9 @@
 import React, { useRef } from 'react';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 const RegisterForm = () => {
+	const router = useRouter()
 	const emailRef = useRef();
 	const passwordRef = useRef();
 	const nameRef = useRef();
@@ -23,7 +26,15 @@ const RegisterForm = () => {
 
         const data = await result.json()
 
-        console.log(data)
+		const response = await signIn('credentials', {
+			redirect: false,
+			password: data.userdata.password,
+			email: data.userdata.email
+		})
+		
+		if (response.ok) {
+			router.replace('/profile')
+		}
 	};
 
 	return (
